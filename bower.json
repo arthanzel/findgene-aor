@@ -1,0 +1,16 @@
+{
+  "name": "findgene-aor",
+  "version": "0.0.1",
+  "authors": [
+    "Martin Hanzel <arthanzel@gmail.com>"
+  ],
+  "main": "public/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

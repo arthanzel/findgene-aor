@@ -1,13 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  code: MyString
-  sequence: MyString
-  notes: MyText
+<%
+  primer_parts = %w[VF2 KanMX NatRX pCUP2 GFP sfGFP RFP YFP BFP A4Down \
+  A4Up A2Down A2Up Ura3 rtACT RNR3 TOR1 TOR2 pGal pGalLX pGalTX pGev pGevLX \
+  pGevTX pTEF1 tTEF1]
+  primer_types = %w[FP RP Seq SDM]
+  primer_bases = %w[a c g t]
+%>
 
-two:
-  name: MyString
-  code: MyString
-  sequence: MyString
-  notes: MyText
+<% 100.times do |n| %>
+primer_<%= n %>:
+  <% length = rand(10..40) %>
+
+  name: <% primer_parts.sample + " " + primer_types.sample %>
+  code: <%= "A%02d" % (n+1) %>
+  sequence: <%= length.times.inject("") { |str| str << primer_bases.sample } %>
+<% end %>
+
+one:
+  name: "Martin's Primer"
+  code: "M01"
+  sequence: "gattaca"

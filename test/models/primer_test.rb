@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PrimerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "fixtures" do
+    assert Primer.count == 101
+  end
 end
