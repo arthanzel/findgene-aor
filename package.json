@@ -1,0 +1,26 @@
+{
+  "name": "findgene-aor",
+  "version": "1.0.0",
+  "description": "== README",
+  "main": "public/index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start"
+  },
+  "author": "Martin Hanzel",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "coffee-script": "^1.9.2",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-mocha": "^0.1.10",
+    "karma-nyan-reporter": "0.0.60",
+    "mocha": "^2.2.5"
+  }
+}

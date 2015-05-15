@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 
-# Ignore Bower components
+# Ignore Node and Bower components
 public/components
+node_modules
