@@ -2,11 +2,16 @@ require 'json'
 require 'test_helper'
 
 class PrimersControllerTest < ActionController::TestCase
-  test "index action should return all primers" do 
-      get :index
-      assert_equal 200, response.status
-      assert_equal 101, json.length
-      assert_equal "A01", json[0]["code"]
+  setup do
+    a = Access.create!()
+    request.headers["Authorization"] = "Token #{ a.token }"
+  end
+
+  test "index action should return all primers" do
+    get :index
+    assert_equal 200, response.status
+    assert_equal 101, json.length
+    assert_equal "A01", json[0]["code"]
   end
 
   test "show action should show one primer" do

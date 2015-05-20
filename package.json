@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "== README",
   "main": "public/index.html",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "node_modules/karma/bin/karma start"
   },

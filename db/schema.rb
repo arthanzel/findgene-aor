@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515150421) do
+ActiveRecord::Schema.define(version: 20150518163129) do
+
+  create_table "accesses", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "accesses", ["user_id"], name: "index_accesses_on_user_id"
 
   create_table "primers", force: :cascade do |t|
     t.string   "name"
@@ -23,5 +32,15 @@ ActiveRecord::Schema.define(version: 20150515150421) do
   end
 
   add_index "primers", ["code"], name: "index_primers_on_code", unique: true
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_hash"
+    t.integer  "access_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "users", ["access_id"], name: "index_users_on_access_id"
 
 end

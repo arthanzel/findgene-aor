@@ -4,8 +4,20 @@
     <title>FindGene</title>
 
     <script src="./components/angular/angular.min.js"></script>
+    <script src="./components/angular-resource/angular-resource.js"></script>
+    <script src="./components/angular-route/angular-route.min.js"></script>
+
+    <!-- Angular components -->
+    <script src="./modules/primers/primerControllers.js"></script>
+
+    <script type="text/javascript">
+        angular.module("findgene", [
+            "primers"
+        ]);
+    </script>
 </head>
 <body>
     findgene
+    <div ng-view></div>
 </body>
 </html>

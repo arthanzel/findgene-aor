@@ -1,0 +1,12 @@
+<div>
+    <h1>Editing Primer</h1>
+
+    <form novalidate>
+        Code: <input type="text" ng-model="primer.code" />
+        Name: <input type="text" ng-model="primer.name" />
+        Sequence: <textarea ng-model="primer.sequence"></textarea>
+
+        <br />
+        <input type="submit" ng-click="save(primer)" value="Save" />
+    </form>
+</div>

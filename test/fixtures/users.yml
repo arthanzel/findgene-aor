@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<%
+    require "bcrypt"
+%>
+
+test_user:
+  username: test_user
+  password_hash: <%= BCrypt::Password.create("my_password") %>

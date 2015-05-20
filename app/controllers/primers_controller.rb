@@ -1,4 +1,6 @@
 class PrimersController < ApplicationController
+  before_filter :restrict_access
+
   def index
     render json: Primer.order(:code)
   end
@@ -35,6 +37,6 @@ class PrimersController < ApplicationController
 
   private
     def primer_params
-      params.require(:primer).permit(:name, :code, :sequence)
+      params.require(:primer).permit(:name, :code, :sequence, :notes)
     end
 end

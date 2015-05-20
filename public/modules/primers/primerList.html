@@ -1,0 +1,7 @@
+<div>
+    <p ng-repeat="primer in primers | orderBy : 'code'">
+        <a ng-href="#/primers/{{ primer.id }}">{{ primer.code }}</a>
+        :: {{ primer.name }} :: {{ primer.sequence }}
+    </p>
+    <a href="#/primers/new">New</a>
+</div>
