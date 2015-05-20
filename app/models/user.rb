@@ -1,8 +1,6 @@
 require "bcrypt"
 
 class User < ActiveRecord::Base
-  has_one :access
-
   # Returns BCrypt's Password object based on the hash
   def password
     @password ||= BCrypt::Password.new(password_hash)

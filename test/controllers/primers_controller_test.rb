@@ -3,8 +3,13 @@ require 'test_helper'
 
 class PrimersControllerTest < ActionController::TestCase
   setup do
-    a = Access.create!()
-    request.headers["Authorization"] = "Token #{ a.token }"
+    request.headers["X-FindGene-Auth"] = "test_user/my_password"
+  end
+
+  test "should deny access to restricted actions" do
+    request.headers["X-FindGene-Auth"] = ""
+    get :index
+    assert_equal 401, response.status
   end
 
   test "index action should return all primers" do
