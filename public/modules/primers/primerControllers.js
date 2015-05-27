@@ -1,4 +1,4 @@
-var primers = angular.module("primers",
+var primers = angular.module("fg-primers",
     ["ngRoute", "ngResource"]
 );
 
@@ -15,9 +15,6 @@ primers.config(function($routeProvider) {
         .when("/primers/:id", {
             controller: "PrimerDetailController",
             templateUrl: "modules/primers/primerDetail.html"
-        })
-        .otherwise({
-            redirectTo: "/primers"
         });
 });
 
@@ -31,7 +28,6 @@ primers.factory("Primer", function($resource) {
 primers.controller("PrimerListController", function($scope, Primer) {
     var data = Primer.query(function() {
         $scope.primers = data;
-        console.log(data);
     });
 });
 
