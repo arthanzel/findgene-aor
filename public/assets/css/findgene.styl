@@ -1,0 +1,64 @@
+@import url("http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans")
+
+// Colour schemes
+// ==============
+black = #000
+blue = #2c96bf
+darkBlue = #296876
+darkBlueTrans = rgba(darkBlue, 0.8)
+gray = #bbb
+orange = #f2921d
+darkOrange = #f2811d
+white = #f2f2f2
+
+// Header
+// ======
+headerHeight = 48px
+headerBorder = 6px
+
+// Rules
+// =====
+
+* {
+    box-sizing border-box
+}
+
+body {
+    background white
+    font 16px "Open Sans"
+    margin (headerHeight + headerBorder) 0px 20px 0px
+}
+
+header {
+    left 0px
+    position fixed
+    top 0px
+    width 100%
+    z-index 10
+    
+    .content {
+        background black
+        color white
+        font 14px Raleway
+        height headerHeight
+        padding 0px 10px
+        
+        a {
+            color white
+        }
+    }
+    
+    .logo {
+        color white
+        font 700 32px/headerHeight Raleway
+        
+        .highlight {
+            color blue
+        }
+    }
+    
+    .border {
+        background darkBlueTrans
+        height headerBorder
+    }
+}

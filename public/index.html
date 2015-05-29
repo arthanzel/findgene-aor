@@ -3,12 +3,15 @@
 <head>
     <title>FindGene</title>
 
+    <link rel="stylesheet" href="assets/css/findgene.css">
+
     <script src="./components/angular/angular.min.js"></script>
     <script src="./components/angular-resource/angular-resource.js"></script>
     <script src="./components/angular-route/angular-route.min.js"></script>
 
     <!-- Angular components -->
     <script src="./modules/primers/primerControllers.js"></script>
+    <script src="./modules/authStore.js"></script>
     <script src="./modules/httpConfig.js"></script>
 
     <script type="text/javascript">
@@ -19,6 +22,13 @@
     </script>
 </head>
 <body>
+    <header>
+        <div class="content">
+            <div class="logo">Find<span class="highlight">Gene</span></div>
+        </div>
+        <div class="border"></div>
+    </header>
+
     findgene
     <div ng-view></div>
 </body>
