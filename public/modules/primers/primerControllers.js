@@ -12,6 +12,10 @@ primers.config(function($routeProvider) {
             controller: "NewPrimerController",
             templateUrl: "modules/primers/primerDetail.html"
         })
+        .when("/primers/new", {
+            controller: "NewPrimerController",
+            templateUrl: "modules/primers/primerDetail.html"
+        })
         .when("/primers/:id", {
             controller: "PrimerDetailController",
             templateUrl: "modules/primers/primerDetail.html"
@@ -25,10 +29,13 @@ primers.factory("Primer", function($resource) {
     );
 });
 
-primers.controller("PrimerListController", function($scope, $location, Primer) {
+primers.controller("PrimerListController", function($rootScope, $scope, $location, Primer) {
     var data = Primer.query(function() {
         $scope.primers = data;
     });
+
+    $rootScope.headerLinks.push({ href: "#/primers/new", text: "New Primer" });
+    $rootScope.headerLinks.push({ href: "#/primers/import", text: "Import" });
 
     $scope.showPrimer = function(id) {
         $location.path("/primers/" + id);

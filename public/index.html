@@ -18,13 +18,22 @@
         angular.module("findgene", [
             "fg-http-config",
             "fg-primers"
-        ]);
+        ]).run(function($rootScope) {
+            $rootScope.$on("$routeChangeStart", function() {
+                $rootScope.headerLinks = [];
+            });
+        });
     </script>
 </head>
 <body>
     <header>
         <div class="content">
             <span class="logo">Find<span class="highlight">Gene</span></span>
+
+            <!-- Header links -->
+            <span ng-repeat="link in headerLinks">
+                <a ng-href="{{ link.href }}">{{ link.text }}</a>
+            </span>
             <a href="#/logout">Logout</a>
         </div>
         <div class="border"></div>
