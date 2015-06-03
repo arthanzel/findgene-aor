@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   resources :primers, only: [:index, :create, :show, :update, :destroy]
 
-  post "auth/login" => "auth/login"
-  post "auth/logout" => "auth/logout"
+  get "auth" => "auth#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

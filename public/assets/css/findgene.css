@@ -5,7 +5,10 @@
 body {
   background: #f2f2f2;
   font: 16px "Open Sans";
-  margin: 54px 0px 20px 0px;
+  margin: 0px 0px 20px 0px;
+}
+body .spacer {
+  height: 54px;
 }
 header {
   left: 0px;
@@ -27,6 +30,7 @@ header .content a {
 header .logo {
   color: #f2f2f2;
   font: 700 32px/48px Raleway;
+  margin-right: 15px;
 }
 header .logo .highlight {
   color: #2c96bf;
@@ -34,4 +38,46 @@ header .logo .highlight {
 header .border {
   background: rgba(41,104,118,0.8);
   height: 6px;
+}
+.wrapper {
+  padding-top: 0;
+}
+input[type="text"],
+input[type="password"] {
+  font-size: 16px;
+  padding: 3px 7px;
+  margin-bottom: 7px;
+  width: 100%;
+}
+button {
+  background: #296876;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f2f2f2;
+  font-size: 16px;
+  padding: 7px 14px;
+}
+.dialog {
+  background: #fff;
+  border: 1px solid #bbb;
+  color: #666;
+  border-radius: 5px;
+  box-shadow: #777 0px 0px 10px;
+  margin: auto;
+  margin-top: 40px;
+  max-width: 90%;
+  padding: 10px;
+  width: 600px;
+}
+.dialog h1 {
+  color: #333;
+  text-align: center;
+}
+.error {
+  background: #b22;
+  border-radius: 5px;
+  padding: 5px;
+  color: #f2f2f2;
+  text-align: center;
 }

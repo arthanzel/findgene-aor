@@ -26,7 +26,11 @@ headerBorder = 6px
 body {
     background white
     font 16px "Open Sans"
-    margin (headerHeight + headerBorder) 0px 20px 0px
+    margin 0px 0px 20px 0px
+    
+    .spacer {
+        height: headerHeight + headerBorder
+    }
 }
 
 header {
@@ -51,6 +55,7 @@ header {
     .logo {
         color white
         font 700 32px/headerHeight Raleway
+        margin-right 15px
         
         .highlight {
             color blue
@@ -61,4 +66,51 @@ header {
         background darkBlueTrans
         height headerBorder
     }
+}
+
+.wrapper {
+    padding-top 0
+}
+
+input[type="text"], input[type="password"] {
+    font-size 16px
+    padding 3px 7px
+    margin-bottom 7px
+    width 100%
+}
+
+button {
+    background darkBlue
+    border 0
+    border-radius 5px
+    cursor pointer
+    color white
+    font-size 16px
+    padding 7px 14px
+}
+
+.dialog {
+    background #fff
+    border 1px solid #bbb
+    color #666
+    border-radius 5px
+    box-shadow #777 0px 0px 10px
+    margin auto
+    margin-top 40px
+    max-width 90%
+    padding 10px
+    width 600px
+    
+    h1 {
+        color #333
+        text-align center
+    }
+}
+
+.error {
+    background #b22
+    border-radius 5px
+    padding 5px
+    color white
+    text-align center
 }

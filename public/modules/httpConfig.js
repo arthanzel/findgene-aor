@@ -5,9 +5,6 @@ angular.module("fg-http-config", ["fg-authStore"])
             if (authStore.hasCredentials()) {
                 config.headers["X-FindGene-Auth"] = authStore.credentials();
             }
-
-            console.log("REQUEST");
-            console.log(config);
             return config;
         },
 
@@ -16,8 +13,8 @@ angular.module("fg-http-config", ["fg-authStore"])
                 $location.path("/login");
                 return response;
             }
-            
-            return response;
+
+            return $q.reject(response);
         }
     };
 })
