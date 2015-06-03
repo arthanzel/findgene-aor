@@ -8,8 +8,10 @@
             </tr>
         </thead>
 
-        <tr ng-repeat="primer in primers | orderBy : 'code'">
-            <td>primer</td>
+        <tr ng-repeat="primer in primers | orderBy : 'code'" ng-click="showPrimer(primer.id)">
+            <td>{{ primer.code }}</td>
+            <td>{{ primer.name }}</td>
+            <td>{{ primer.sequence }}</td>
         </tr>
     </table>
 

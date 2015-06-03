@@ -25,10 +25,14 @@ primers.factory("Primer", function($resource) {
     );
 });
 
-primers.controller("PrimerListController", function($scope, Primer) {
+primers.controller("PrimerListController", function($scope, $location, Primer) {
     var data = Primer.query(function() {
         $scope.primers = data;
     });
+
+    $scope.showPrimer = function(id) {
+        $location.path("/primers/" + id);
+    };
 });
 
 primers.controller("PrimerDetailController", function($scope, $routeParams, $location, Primer) {

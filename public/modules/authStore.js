@@ -11,12 +11,12 @@ angular.module("fg-authStore", ["ngRoute"])
         });
 })
 .controller("LoginController", function($scope, $location, $http, authStore) {
-    $scope.username = "";
-    $scope.password = "";
+    authStore.clearCredentials();
+
     $scope.submit = function() {
-        // $http will set a request header with credentials in authStore.
+        // $http will automatically set a request header with credentials from authStore.
+        // This logic lives in httpConfig.js.
         authStore.setCredentials($scope.username, $scope.password);
-        console.log(authStore.credentials());
 
         $http.get("/auth")
             .success(function() {
@@ -29,9 +29,7 @@ angular.module("fg-authStore", ["ngRoute"])
     };
 })
 .controller("LogoutController", function ($location, authStore) {
-    console.log("logout");
-    authStore.username = "";
-    authStore.password = "";
+    authStore.clearCredentials();
 
     $location.path("/login");
 })
@@ -48,5 +46,9 @@ angular.module("fg-authStore", ["ngRoute"])
     setCredentials: function(u, p) {
         sessionStorage.setItem("username", u);
         sessionStorage.setItem("password", p);
+    },
+    clearCredentials: function() {
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("password");
     }
 });
