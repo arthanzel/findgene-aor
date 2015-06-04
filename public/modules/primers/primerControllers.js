@@ -29,17 +29,34 @@ primers.factory("Primer", function($resource) {
     );
 });
 
-primers.controller("PrimerListController", function($rootScope, $scope, $location, Primer) {
-    var data = Primer.query(function() {
-        $scope.primers = data;
-    });
+primers.controller("PrimerListController", function($rootScope, $scope, $location, $http) {
+    $scope.searchCode = "";
+    $scope.searchName = "";
+    $scope.searchSequence = "";
 
     $rootScope.headerLinks.push({ href: "#/primers/new", text: "New Primer" });
     $rootScope.headerLinks.push({ href: "#/primers/import", text: "Import" });
 
-    $scope.showPrimer = function(id) {
+    $scope.showPrimer = function showPrimer(id) {
         $location.path("/primers/" + id);
     };
+
+    // Watch for changes on the search parameters and fire off a request.
+    // The model is debounced.
+    var search = function search() {
+        $http({
+            url: "/primers",
+            method: "GET",
+            params: {
+                code: $scope.searchCode,
+                name: $scope.searchName,
+                sequence: $scope.searchSequence
+            }
+        }).success(function searchSuccess(response) {
+            $scope.primers = response;
+        });
+    };
+    $scope.$watchGroup(["searchCode", "searchName", "searchSequence"], search);
 });
 
 primers.controller("PrimerDetailController", function($scope, $routeParams, $location, Primer) {

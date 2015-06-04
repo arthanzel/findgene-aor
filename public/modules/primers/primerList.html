@@ -2,9 +2,12 @@
     <table class="dataTable">
         <thead>
             <tr>
-                <th><input type="text" placeholder="Code"></th>
-                <th><input type="text" placeholder="Name"></th>
-                <th><input type="text" placeholder="Sequence"></th>
+                <th><input type="text" placeholder="Code" ng-model="searchCode"
+                    ng-model-options="{ debounce: 300 }"></th>
+                <th><input type="text" placeholder="Name" ng-model="searchName"
+                    ng-model-options="{ debounce: 300 }"></th>
+                <th><input type="text" placeholder="Sequence" ng-model="searchSequence"
+                    ng-model-options="{ debounce: 300 }"></th>
             </tr>
         </thead>
 

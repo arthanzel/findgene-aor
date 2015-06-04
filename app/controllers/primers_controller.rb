@@ -2,7 +2,9 @@ class PrimersController < ApplicationController
   before_filter :restrict_access
 
   def index
-    render json: Primer.order(:code)
+    render json: Primer.search(code: params[:code],
+                               name: params[:name],
+                               sequence: params[:sequence])
   end
 
   def show
