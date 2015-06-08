@@ -13,7 +13,6 @@ class PrimersController < ApplicationController
   end
 
   def create
-    puts primer_params
     primer = Primer.new(primer_params)
     if primer.save
       render json: primer, status: :created

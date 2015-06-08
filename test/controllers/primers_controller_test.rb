@@ -31,11 +31,9 @@ class PrimersControllerTest < ActionController::TestCase
   test "create action should create a primer" do
     #TODO: add validation
     post :create, {
-      primer: {
-        name: "Hanzel's Primer",
-        code: "H01",
-        sequence: "tataaat"
-      }
+      name: "Hanzel's Primer",
+      code: "H01",
+      sequence: "tataaat"
     }
     assert_equal 201, response.status
     assert_equal json["code"], "H01"
@@ -43,11 +41,9 @@ class PrimersControllerTest < ActionController::TestCase
     assert_equal "tataaat", Primer.find_by_code("H01").sequence
 
     post :create, {
-      primer: {
-        name: "Hanzel's Primer",
-        code: "M01",
-        sequence: "tataaat"
-      }
+      name: "Hanzel's Primer",
+      code: "M01",
+      sequence: "tataaat"
     }
     assert_equal 409, response.status
   end
@@ -56,20 +52,18 @@ class PrimersControllerTest < ActionController::TestCase
     # TODO: add validation
     put :update, {
       id: Primer.find_by_code("M01").id,
-      primer: {
-        name: "Martin's Updated Primer",
-        code: "M02"
-      }
+      name: "Martin's Updated Primer",
+      code: "M02"
     }
     assert_equal 200, response.status
     assert_equal "Martin's Updated Primer", json["name"]
     assert_equal "gattaca", Primer.find_by_code("M02").sequence
     assert_nil Primer.find_by_code("M01")
 
-    put :update, { id: "Does not exist", primer: { name: "Does nothing" } }
+    put :update, { id: "Does not exist", name: "Does nothing" }
     assert_equal 404, response.status
 
-    put :update, { id: Primer.find_by_code("M02"), primer: { code: "A01" } }
+    put :update, { id: Primer.find_by_code("M02"), code: "A01" }
     assert_equal 409, response.status
     assert_equal Primer.find_by_code("M02").name, "Martin's Updated Primer"
     assert_not_equal Primer.find_by_code("A01").name, "Martin's Updated Primer"
