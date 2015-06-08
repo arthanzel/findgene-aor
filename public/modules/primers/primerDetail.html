@@ -1,5 +1,9 @@
-<div>
+<div class="dialog">
     <h1>Editing Primer</h1>
+
+    <div class="error" ng-if="errors">
+        <div ng-repeat="error in errors">{{ error }}</div>
+    </div>
 
     <form novalidate>
         Code: <input type="text" ng-model="primer.code" />

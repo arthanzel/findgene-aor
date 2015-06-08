@@ -1,5 +1,7 @@
 class Primer < ActiveRecord::Base
-  validates :code, uniqueness: true
+  validates :code, uniqueness: true, presence: true
+  validates :name, presence: true
+  validates :sequence, presence: true
 
   # Finds primers that match a specified code, name, AND sequence.
   # Used for quick-searching.

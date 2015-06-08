@@ -13,11 +13,12 @@ class PrimersController < ApplicationController
   end
 
   def create
+    puts primer_params
     primer = Primer.new(primer_params)
     if primer.save
       render json: primer, status: :created
     else
-      render nothing: true, status: :conflict
+      render json: primer.errors.full_messages, status: :conflict
       # TODO: Conflict details
     end
   end
@@ -27,7 +28,7 @@ class PrimersController < ApplicationController
     if primer.update(primer_params)
       render json: primer
     else
-      render nothing: true, status: :conflict
+      render json: primer.errors.full_messages, status: :conflict
       # TODO: conflict details
     end
   end
@@ -39,6 +40,6 @@ class PrimersController < ApplicationController
 
   private
     def primer_params
-      params.require(:primer).permit(:name, :code, :sequence, :notes)
+      params.permit(:name, :code, :sequence, :notes)
     end
 end

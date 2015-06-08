@@ -65,8 +65,10 @@ primers.controller("PrimerDetailController", function($scope, $routeParams, $loc
     });
 
     $scope.save = function() {
-        $scope.primer.$update({}, function() {
+        $scope.primer.$update({}, function success() {
             $location.path("/primers");
+        }, function error(res) {
+            $scope.errors = res.data;
         });
     };
 
@@ -79,8 +81,10 @@ primers.controller("NewPrimerController", function($scope, $location, Primer) {
     $scope.primer = new Primer();
 
     $scope.save = function() {
-        $scope.primer.$save({}, function() {
+        $scope.primer.$save({}, function success() {
             $location.path("/primers");
+        }, function error(res) {
+            $scope.errors = res.data;
         });
     };
 });

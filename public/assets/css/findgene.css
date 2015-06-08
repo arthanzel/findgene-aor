@@ -44,10 +44,13 @@ header .border {
   padding-top: 0;
 }
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea {
+  border: 1px solid #bbb;
   font-size: 16px;
   padding: 3px 7px;
   margin-bottom: 7px;
+  resize: none;
   width: 100%;
 }
 button {
@@ -78,8 +81,9 @@ button {
 .error {
   background: #b22;
   border-radius: 5px;
-  padding: 5px;
   color: #f2f2f2;
+  margin-bottom: 7px;
+  padding: 5px;
   text-align: center;
 }
 .dataTable {
