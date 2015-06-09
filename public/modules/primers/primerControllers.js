@@ -30,6 +30,9 @@ primers.factory("Primer", function($resource) {
 });
 
 primers.controller("PrimerListController", function($rootScope, $scope, $location, $http) {
+    $scope.primers = [];
+    $scope.page = 1;
+    $scope.endOfResults = false;
     $scope.searchCode = "";
     $scope.searchName = "";
     $scope.searchSequence = "";
@@ -53,10 +56,30 @@ primers.controller("PrimerListController", function($rootScope, $scope, $locatio
                 sequence: $scope.searchSequence
             }
         }).success(function searchSuccess(response) {
+            $scope.page = 1;
+            $scope.endOfResults = response.length < 100;
+            console.log($scope.endOfResults);
             $scope.primers = response;
         });
     };
     $scope.$watchGroup(["searchCode", "searchName", "searchSequence"], search);
+
+    $scope.loadMore = function loadMore() {
+        $http({
+            url: "/primers",
+            method: "GET",
+            params: {
+                code: $scope.searchCode,
+                name: $scope.searchName,
+                sequence: $scope.searchSequence,
+                page: $scope.page + 1
+            }
+        }).success(function searchSuccess(response) {
+            $scope.page++;
+            $scope.endOfResults = response.length < 100;
+            $scope.primers = $scope.primers.concat(response);
+        });
+    };
 });
 
 primers.controller("PrimerDetailController", function($scope, $routeParams, $location, Primer) {

@@ -11,14 +11,12 @@
             </tr>
         </thead>
 
-        <tr ng-repeat="primer in primers | orderBy : 'code'" ng-click="showPrimer(primer.id)">
+        <tr ng-repeat="primer in primers" ng-click="showPrimer(primer.id)">
             <td>{{ primer.code || "-" }}</td>
             <td>{{ primer.name }}</td>
             <td>{{ primer.sequence }}</td>
         </tr>
     </table>
 
-    <div ng-if="primers.length == 0" class="error">
-        There ain't no primers
-    </div>
+    <a href ng-hide="endOfResults" ng-click="loadMore()">Load more</a>
 </div>

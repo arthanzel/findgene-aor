@@ -2,9 +2,12 @@ class PrimersController < ApplicationController
   before_filter :restrict_access
 
   def index
+    page = if params[:page] then params[:page].to_i else 1 end
+
     render json: Primer.search(code: params[:code],
                                name: params[:name],
-                               sequence: params[:sequence])
+                               sequence: params[:sequence],
+                               page: page)
   end
 
   def show

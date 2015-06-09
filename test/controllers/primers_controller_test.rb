@@ -12,11 +12,16 @@ class PrimersControllerTest < ActionController::TestCase
     assert_equal 401, response.status
   end
 
-  test "index action should return all primers" do
+  test "index action should return pages of 100 primers" do
     get :index
     assert_equal 200, response.status
-    assert_equal 101, json.length
+    assert_equal 100, json.length
     assert_equal "A01", json[0]["code"]
+
+    get :index, { page: 2 }
+    assert_equal 200, response.status
+    assert_equal 1, json.length
+    assert_equal "M01", json[0]["code"]
   end
 
   test "show action should show one primer" do
@@ -29,7 +34,6 @@ class PrimersControllerTest < ActionController::TestCase
   end
 
   test "create action should create a primer" do
-    #TODO: add validation
     post :create, {
       name: "Hanzel's Primer",
       code: "H01",
@@ -40,6 +44,7 @@ class PrimersControllerTest < ActionController::TestCase
     assert_equal 102, Primer.count
     assert_equal "tataaat", Primer.find_by_code("H01").sequence
 
+    # Invalid primer (code conflict)
     post :create, {
       name: "Hanzel's Primer",
       code: "M01",
@@ -60,9 +65,11 @@ class PrimersControllerTest < ActionController::TestCase
     assert_equal "gattaca", Primer.find_by_code("M02").sequence
     assert_nil Primer.find_by_code("M01")
 
+    # Updating a non-existent primer
     put :update, { id: "Does not exist", name: "Does nothing" }
     assert_equal 404, response.status
 
+    # Invalid primer (code conflict)
     put :update, { id: Primer.find_by_code("M02"), code: "A01" }
     assert_equal 409, response.status
     assert_equal Primer.find_by_code("M02").name, "Martin's Updated Primer"
@@ -75,6 +82,7 @@ class PrimersControllerTest < ActionController::TestCase
     assert_equal 100, Primer.count
     assert_nil Primer.find_by_code("M01")
 
+    # Deleting a non-existent primer
     delete :destroy, { id: "Does not exist" }
     assert_equal 404, @response.status
   end
