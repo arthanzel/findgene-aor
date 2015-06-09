@@ -38,7 +38,7 @@ primers.controller("PrimerListController", function($rootScope, $scope, $locatio
     $scope.searchSequence = "";
 
     $rootScope.headerLinks.push({ href: "#/primers/new", text: "New Primer" });
-    $rootScope.headerLinks.push({ href: "#/primers/import", text: "Import" });
+    //$rootScope.headerLinks.push({ href: "#/primers/import", text: "Import" });
 
     $scope.showPrimer = function showPrimer(id) {
         $location.path("/primers/" + id);
@@ -58,7 +58,6 @@ primers.controller("PrimerListController", function($rootScope, $scope, $locatio
         }).success(function searchSuccess(response) {
             $scope.page = 1;
             $scope.endOfResults = response.length < 100;
-            console.log($scope.endOfResults);
             $scope.primers = response;
         });
     };
